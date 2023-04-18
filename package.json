@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app1": "pnpm --filter sub_app1 serve",
+    "app2": "pnpm --filter sub_app2 serve",
+    "app3": "pnpm --filter sub_app3 serve",
+    "app4": "pnpm --filter sub_app4 serve",
+    "wujie_main_app": "pnpm --filter wujie_main serve",
+    "serve": "pnpm -C ./projects/sub_app1 serve & pnpm -C ./projects/sub_app2 serve & pnpm -C ./projects/sub_app3 serve & pnpm -C ./projects/sub_app4 serve & pnpm -C ./projects/wujie_main serve"
+  },
+  "author": "",
+  "license": "ISC"
+}
