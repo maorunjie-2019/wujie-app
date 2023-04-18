@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <style>
+      #totest {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="mulapp"></div>
+    <div>
+      <span class="wrapper">这是一个span标签</span>
+    </div> -->
+    <!-- <test-info></test-info> -->
+    <!-- <a href="/app4/test.html">去test页面</a> -->
+    <!-- <span id="totest">去test页面</span> -->
+    <div>app4-index</div>
+    <script>
+      document.cookie = "a=111;max-age:3600";
+      fetch("/", { headers: { a: "123" } });
+    </script>
+    <!-- <script src="/app4/index.js"></script>
+    <script src="/app4/b.js"></script> -->
+    <script>
+      if (window.__POWERED_BY_WUJIE__) {
+        window.onload = function () {
+          const aes = document.querySelectorAll("a");
+          aes.forEach((a) => {
+            const href = a.href;
+            a.removeAttribute("href");
+            a.style.cursor = "pointer";
+            a.onclick = function () {
+              window.$wujie?.bus.$emit(`urlChange`, href);
+            };
+          });
+        };
+
+        window.$wujie?.bus.$on("pathChange", (path) => {
+          const { id } = window.__WUJIE;
+          const toPath = path[id];
+          if (!toPath) {
+            return;
+          }
+          window.$wujie?.bus.$emit(
+            `urlChange`,
+            "http://localhost:3070" + toPath
+          );
+        });
+      }
+
+      //   class PopUpInfo extends window.parent.HTMLElement {
+      //     constructor() {
+      //       super();
+      //       var shadow = this.attachShadow({ mode: "open" });
+      //       var wrapper = document.createElement("span");
+      //       wrapper.setAttribute("class", "wrapper");
+      //       wrapper.appendChild(
+      //         document.createTextNode("Hi there and greetings!")
+      //       );
+      //       shadow.appendChild(wrapper);
+      //       const style = document.createElement("style");
+      //       style.textContent = `.wrapper {
+      //           color:red;
+      //         }`;
+      //       // attach the created elements to the shadow DOM
+      //       shadow.append(style);
+      //       //   console.log(document.getElementsByTagName("span"));
+      //     }
+      //     connectedCallback() {
+      //       console.log("connectedCallback");
+      //     }
+      //   }
+      //   if (!customElements.get("test-info")) {
+      //     window.parent.customElements.define("test-info", PopUpInfo);
+      //   }
+      //   console.log(window.parent, "window.parent");
+    </script>
+  </body>
+</html>

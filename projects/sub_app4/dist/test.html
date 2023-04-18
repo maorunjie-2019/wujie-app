@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <div>这是test页面<span>123</span></div>
+    <span>456</span>
+    <div id="test" name="app1">1233333</div>
+    <a href="/app4/index.html">去index页面</a> -->
+    <div>app4-test</div>
+    <script>
+      if (window.__POWERED_BY_WUJIE__) {
+        window.onload = function () {
+          const aes = document.querySelectorAll("a");
+          aes.forEach((a) => {
+            const href = a.href;
+            a.removeAttribute("href");
+            a.style.cursor = "pointer";
+            a.onclick = function () {
+              const appId = window.__WUJIE.id;
+              window.$wujie?.bus.$emit(`urlChange`, href);
+            };
+          });
+        };
+        // window.$wujie?.bus.$on("pathChange", (path) => {
+        //   const { id } = window.__WUJIE;
+        //   const toPath = path[id];
+        //   if (!toPath) {
+        //     return;
+        //   }
+        //   window.$wujie?.bus.$emit(
+        //     `urlChange`,
+        //     "http://localhost:3070" + toPath
+        //   );
+        // });
+      }
+      //   document.querySelector("#test").onclick = () => {
+      //     alert("123");
+      //   };
+    </script>
+  </body>
+</html>
